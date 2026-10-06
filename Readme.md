@@ -8,7 +8,7 @@ The full terminal output for each node is saved to ~/install_logs/<node>_<timest
 The node also keeps its own copy in /var/log/install_deps.log.
 
 ## Current limitation
-The script will ask the password before connecting to each node. The following (***untested!***) should generate a key for your current user and deploy it to eachy node as well:
+The script will ask the password before connecting to each node. The following (***untested!***) should generate a key for your current user and deploy it to each node as well:
 ```shell
 ssh-keygen -t ed25519 # skip if you already have a key
 # Replace node{1..5} with wathever name you are using for your computing nodes

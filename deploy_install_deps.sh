@@ -1,11 +1,10 @@
 #!/bin/bash
-# ^ "Shebang": run this file with bash.
 #
-# Deploy and run install_deps.sh as root on the compute nodes, from blade00.
+# Deploy and run install_deps.sh as root on the compute nodes, from  the controller node.
 #
-# Usage: ./deploy_install_deps.sh [-v] [-n "blade01 blade02"]
+# Usage: ./deploy_install_deps.sh [-v] [-n "node01 node02"]
 #   -v          pass verbose mode to install_deps.sh
-#   -n NODES    space-separated node list (default: blade01..blade05)
+#   -n NODES    space-separated node list (default: node01..node05)
 #
 # The full terminal output for each node is saved to ~/install_logs/<node>_<timestamp>.log
 # (the node also keeps its own copy in /var/log/install_deps.log).
@@ -16,7 +15,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Defaults, which the options below may override.
-NODES="blade01 blade02 blade03 blade04 blade05"   # nodes to install on
+NODES="node01 node02 node03 node04 node05"   # nodes to install on
 FLAGS=""                                          # extra flags passed to install_deps.sh
 
 # Parse options: "vn:h" = -v (flag), -n NODES (takes an argument), -h (help).

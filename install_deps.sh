@@ -1,5 +1,4 @@
 #!/bin/bash
-# ^ "Shebang": tells the system to run this file with bash.
 #
 # Install build dependencies on a cluster node. Must run as root.
 #
@@ -59,33 +58,38 @@ fi
 # Header line in the log: date (ISO format), node name, and the settings in use.
 echo "=== $(date -Is) install_deps on $(hostname) (verbose=$VERBOSE, log=$LOG) ==="
 
+
+#######################################################################################
+# USER INPUT NEEDED !                                                                 #
+#                                                                                     #
+# Adjust the argument of the apt-get install command to suit your specific needs, and #
+# add additional command you want to execute on each node                             #
+#######################################################################################
+
 # Refresh the package index so apt knows the current versions and names.
 apt-get update
 
 # Install the main set of packages. "${APT_OPTS[@]}" expands to the options built above.
 # The backslashes at the end of each line continue the command onto the next line.
-#   bison flex            parser/lexer generators
-#   clang llvm            C/C++ compiler and the LLVM toolchain
-#   git make cmake        version control and build tools
-#   maven default-jdk     Java build tool and the Java compiler/runtime
-#   swig                  generates wrappers that connect C/C++ to other languages
-#   curl zip              download and archive utilities
-#   g++                   GNU C++ compiler
-#   libx11-dev libxt-dev  X11 development headers
+#   bison flex                     parser/lexer generators
+#   clang llvm                     C/C++ compiler and the LLVM toolchain
+#   git make cmake                 version control and build tools
+#   maven default-jdk              Java build tool and the Java compiler/runtime
+#   swig                           generates wrappers that connect C/C++ to other languages
+#   curl zip                       download and archive utilities
+#   g++                            GNU C++ compiler
+#   libx11-dev libxt-dev           X11 development headers
 #   libmotif-common libmotif-dev   Motif GUI toolkit and its headers
-#   libxml2-dev           XML parser headers
-#   python3-dev           Python 3 headers, needed to build Python extensions
-#   zlib1g-dev            compression library headers
-#   llvm-dev libclang-dev LLVM and Clang development headers
-#   libudunits2-dev       unit conversion library headers
+#   libxml2-dev                    XML parser headers
+#   python3-dev                    Python 3 headers, needed to build Python extensions
+#   zlib1g-dev                     compression library headers
+#   llvm-dev libclang-dev          LLVM and Clang development headers
+#   libudunits2-dev                unit conversion library headers
 apt-get install "${APT_OPTS[@]}" \
     bison clang flex git llvm make maven swig cmake \
     curl g++ libx11-dev libxml2-dev libxt-dev libmotif-common libmotif-dev \
     python3-dev zlib1g-dev llvm-dev libclang-dev libudunits2-dev \
-    default-jdk zip
-
-# Second group of packages: Google Test sources, HDF5 tools and headers, GNU Scientific Library.
-apt-get install "${APT_OPTS[@]}" libgtest-dev hdf5-tools libhdf5-dev libgsl-dev
+    default-jdk zip libgtest-dev hdf5-tools libhdf5-dev libgsl-dev
 
 # PYTHON_VERSION=3 steers configure scripts to python3 instead of python2.7.
 # An export inside this script dies with the script, so persist it for login shells:

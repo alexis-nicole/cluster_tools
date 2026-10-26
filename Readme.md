@@ -1,9 +1,5 @@
 # Readme
-This utility deploys and run install_deps.sh as root on the compute nodes, from  the controller node.
-
-Usage: ./deploy_install_deps.sh [-v] [-n "node01 node02"]
-       -v          pass verbose mode to install_deps.sh
-       -n NODES    space-separated node list (default: node01..node05)
+The script `deploy_install_deps.sh` deploys and run install_deps.sh as root on the compute nodes, from  the controller node.
 The full terminal output for each node is saved to ~/install_logs/<node>_<timestamp>.log
 The node also keeps its own copy in /var/log/install_deps.log.
 

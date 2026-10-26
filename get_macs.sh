@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
+
 # get-macs.sh: collect the MAC address of a given interface from each node.
-# Run from blade00.
+# Run from your control node
 #
 # Usage: ./get-macs.sh -i IFACE [-w] NODE [NODE...]
 #   -i IFACE   interface name (required)
 #   -w         output a MediaWiki table instead of plain text
 #
-# Example: ./get_macs.sh -i enp2s0f0 noe0{1..5}
-:#          ./get_macs.sh -i enp2s0f0 -w node01 node02
+# Example: ./get_macs.sh -i enp2s0f0 nodde{1..5}
+#          ./get_macs.sh -i enp2s0f0 -w node01 node02
 
 usage() {
     echo "Usage: $0 -i IFACE [-w] NODE [NODE...]" >&2

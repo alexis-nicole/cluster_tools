@@ -1,6 +1,8 @@
 # Readme
 The script `deploy_install_deps.sh` deploys and run install_deps.sh as root on the compute nodes, from  the controller node.
+
 The full terminal output for each node is saved to ~/install_logs/<node>_<timestamp>.log
+
 The node also keeps its own copy in /var/log/install_deps.log.
 
 ## Current limitation
